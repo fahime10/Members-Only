@@ -8,11 +8,14 @@
     "serverstart": "DEBUG=members-only:* & npm start"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "express-session": "^1.17.3",
+    "express-validator": "^7.0.1",
     "http-errors": "~1.6.3",
+    "luxon": "^3.4.0",
     "mongoose": "^7.4.3",
     "morgan": "~1.9.1",
     "passport": "^0.6.0",
@@ -20,6 +23,7 @@
     "pug": "2.0.0-beta11"
   },
   "devDependencies": {
+    "dotenv": "^16.3.1",
     "nodemon": "^3.0.1"
   }
 }
