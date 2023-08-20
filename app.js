@@ -4,6 +4,10 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const session = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 
@@ -17,7 +21,7 @@ async function main() {
   await mongoose.connect(mongoDB);
 }
 
-const indexRouter = require('./routes/index');
+const routers = require('./routes/routes');
 
 const app = express();
 
@@ -31,7 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/', routers);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
