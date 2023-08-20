@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  div(class='centralize')
+    h1= title
+
+    form(method='POST' action='' class='forms')
+      label(for='username') Username: 
+      input(type='text'
+        name='username'
+        placeholder='Please enter username here'
+        minLength='1'
+        maxLength='20'
+        required='true')
+
+      label(for='password') Password: 
+      input(type='password'
+        name='password'
+        required='true')
+      
+      button(type='submit' class='options') Submit
+      a(href='/' class='options') Cancel
