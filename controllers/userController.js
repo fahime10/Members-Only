@@ -104,5 +104,5 @@ exports.membership_post = asyncHandler(async (req, res, next) => {
         await User.findOneAndUpdate({ username: req.body.username }, { member: true });
         res.redirect('/messages');
     }
-    // res.redirect('/messages');
+    res.redirect('/messages');
 });

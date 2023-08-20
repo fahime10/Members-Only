@@ -23,4 +23,8 @@ router.get('/membership', user_controller.membership_get);
 
 router.post('/membership', user_controller.membership_post);
 
+router.get('/messages/create', message_controller.messages_create_get);
+
+router.post('/messages/create', message_controller.messages_create_post);
+
 module.exports = router;
