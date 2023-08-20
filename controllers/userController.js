@@ -3,15 +3,16 @@ const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 
-exports.sign_up_form_get = (req, res, next) => 
+exports.sign_up_form_get = asyncHandler(async (req, res, next) => {
     res.render('sign_up_form', { title: 'Members Only Club - Sign up form' });
+});
 
 exports.sign_up_form_post = [
-    body('first-name')
+    body('first_name')
         .trim()
         .escape(),
 
-    body('last-name')
+    body('last_name')
         .trim()
         .escape(),
 
@@ -22,6 +23,7 @@ exports.sign_up_form_post = [
                 throw new Error('Username already in use');
             }
         })
+        .trim()
         .escape(),
 
     body('password', 'Password must be at least 4 characters long')
@@ -31,10 +33,9 @@ exports.sign_up_form_post = [
 
     body('confirm-password')
         .custom((value, { req }) => {
-            if (value != req.body.password) {
+            if (value !== req.body.password) {
                 throw new Error('Passwords do not match')
             }
-            // return value === req.body.password;
         })
         .escape(),
 
@@ -60,7 +61,6 @@ exports.sign_up_form_post = [
                         user: user,
                         errors: errors.array(),
                     });
-                    console.log(user);
                     return;
                 } else {
                     await user.save();
@@ -68,5 +68,5 @@ exports.sign_up_form_post = [
                 }
             }
         });
-    })
+    }),
 ]

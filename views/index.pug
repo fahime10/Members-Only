@@ -23,12 +23,12 @@ block content
 
   a(href='/sign-up') If you don't have an account, sign up here
 
-  div(class='messages')
-    each message in messages_list 
-      h4 #{message.username}
+  each message in messages_list 
+    div(class='messages')
+      h4(class='title') Posted by #{message.username}
       h4 #{message.title}
       p #{message.text}
       p #{message.timestamp}
 
-    else 
-      p There are no messages at the moment.
+  else 
+    p There are no messages at the moment.

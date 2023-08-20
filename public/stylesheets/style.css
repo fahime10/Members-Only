@@ -11,6 +11,17 @@ a {
   margin-top: 1rem;
 }
 
+.messages {
+  border: 3px solid black;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: antiquewhite;
+}
+
+.title {
+  border-bottom: 3px solid black;
+}
+
 .forms {
   display: flex;
   flex-direction: column;
