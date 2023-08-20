@@ -92,3 +92,17 @@ exports.logout_get = (req, res) => {
     req.logout();
     res.redirect('/');
 }
+
+exports.membership_get = (req, res, next) => {
+    res.render('membership', { title: 'Members Only Club - Membership', user: res.locals.currentUser });
+};
+
+exports.membership_post = asyncHandler(async (req, res, next) => {
+    const trueSecret = process.env.SECRET_PASSCODE;
+
+    if (req.body.secret === trueSecret) {
+        await User.findOneAndUpdate({ username: req.body.username }, { member: true });
+        res.redirect('/messages');
+    }
+    // res.redirect('/messages');
+});
