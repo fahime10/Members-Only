@@ -13,10 +13,12 @@ block content
                 a(href='/' class='options') Logout
 
         div(class='content')
+            if user.member
+                a(href='/messages/create' class='options') Create a new message
             each message in messages_list 
                 if user.member 
                     div(class='messages')
-                        h4(class='title') Posted by #{message.username}
+                        h4(class='title') Posted by #{message.user.username}
                         h4 #{message.title}
                         p #{message.text}
                         p #{message.timestamp}
