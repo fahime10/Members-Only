@@ -3,12 +3,28 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: cadetblue;
   color: rgba(108, 3, 3, 0.719);
+  margin: 0;
 }
 
 a {
   color: #ffb75f;
   display: inline-block;
   margin-top: 1rem;
+}
+
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 20vw;
+  border-right: 2px solid black;
+  padding-top: 5rem;
+}
+
+.content {
+  width: 80vw;
+  margin-left: 1rem;
 }
 
 .messages {
@@ -27,6 +43,11 @@ a {
   flex-direction: column;
   color: white;
   font-size: medium;
+  width: 40%;
+}
+
+.centralize {
+  margin-left: 30%;
 }
 
 .forms label {
@@ -37,10 +58,11 @@ a {
   background-color: rgb(3, 3, 133);
   color: white;
   border-radius: 5px;
-  padding: 0.5rem 3rem;
-  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+  margin: 1rem 2rem 0;
   text-align: center;
   text-decoration: none;
   font-size: medium;
   border: 1px solid black;
+  cursor: pointer;
 }

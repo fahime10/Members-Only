@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const passport = require('passport');
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
@@ -71,4 +72,23 @@ exports.sign_up_form_post = [
             return next(err);
         }
     }),
-]
+];
+
+exports.login_get = (req, res) => {
+    if (res.locals.currentUser) {
+        res.redirect('/messages');
+    }
+
+    res.render('login_form', { title: "Login" });
+}
+
+exports.login_post = 
+    passport.authenticate('local', {
+    successRedirect: '/messages',
+    failureRedirect: '/log-in'
+});
+
+exports.logout_get = (req, res) => {
+    req.logout();
+    res.redirect('/');
+}

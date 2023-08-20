@@ -3,32 +3,19 @@ extends layout
 block content
   h1= title
 
-  h2 Login
+  div(class='container')
+      div(class='sidebar')
+        a(href='/log-in' class='options') Login
 
-  form(method='POST' action='' class='forms')
-    label(for='username') Username: 
-    input(type='text'
-      name='username'
-      placeholder='Please enter username here'
-      minLength='1'
-      maxLength='20'
-      required='true')
+        a(href='/sign-up' class='options') Sign up here
+        
+      div(class='content')
+        each message in messages_list 
+          div(class='messages')
+            h4(class='title') Posted by Anonymous
+            h4 #{message.title}
+            p #{message.text}
+            p #{message.timestamp}
 
-    label(for='password') Password: 
-    input(type='password'
-      name='password'
-      required='true')
-    
-    button(type='submit' class='options') Submit
-
-  a(href='/sign-up') If you don't have an account, sign up here
-
-  each message in messages_list 
-    div(class='messages')
-      h4(class='title') Posted by #{message.username}
-      h4 #{message.title}
-      p #{message.text}
-      p #{message.timestamp}
-
-  else 
-    p There are no messages at the moment.
+        else 
+          p There are no messages at the moment.
