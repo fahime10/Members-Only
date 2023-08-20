@@ -9,6 +9,7 @@ block content
             name='first_name'
             placeholder='Please enter your first name'
             maxLength='20'
+            value=(undefined===user ? '' : user.firstName)
             required='true')
 
         label(for='last_name') Last name: 
@@ -16,6 +17,7 @@ block content
             name='last_name'
             placeholder='Please enter your last name'
             maxLength='20'
+            value=(undefined===user ? '' : user.lastName)
             required='true')
 
         label(for='username') Username: 
@@ -23,6 +25,7 @@ block content
             name='username'
             placeholder='Please enter your username'
             maxLength='20'
+            value=(undefined===user ? '' : user.username)
             required='true')
 
         label(for='password') Password: 
