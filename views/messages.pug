@@ -7,10 +7,15 @@ block content
         div(class='sidebar')
             if (!user.member)
                 a(href='/membership' class='options') Become a member
-                a(href='/' class='options') Logout
+                a(href='/logout' class='options') Logout
+            else if (!user.admin)
+                p You are a member 
+                a(href='/admin' class='options') Become an admin
+                a(href='/logout' class='options') Logout
             else 
                 p You are a member 
-                a(href='/' class='options') Logout
+                p You are an admin 
+                a(href='/logout' class='options') Logout
 
         div(class='content')
             if user.member
