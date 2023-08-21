@@ -18,10 +18,17 @@ block content
                 a(href='/logout' class='options') Logout
 
         div(class='content')
-            if user.member
+            if user.member || user.admin
                 a(href='/messages/create' class='options') Create a new message
             each message in messages_list 
-                if user.member 
+                if user.admin 
+                    div(class='messages')
+                        h4(class='title') Posted by #{message.user.username}
+                        h4 #{message.title}
+                        p #{message.text}
+                        p #{message.timestamp}
+                        a(href='messages/delete' class='options') Delete message
+                else if user.member 
                     div(class='messages')
                         h4(class='title') Posted by #{message.user.username}
                         h4 #{message.title}
