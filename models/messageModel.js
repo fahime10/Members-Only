@@ -14,4 +14,8 @@ MessageSchema.virtual('date').get(function () {
     return DateTime.fromJSDate(this.timestamp).toFormat('yyyy-MM-dd, HH:mm');
 });
 
+MessageSchema.virtual('url').get(function () {
+    return `/messages/delete/${this._id}`;
+});
+
 module.exports = mongoose.model('Message', MessageSchema);

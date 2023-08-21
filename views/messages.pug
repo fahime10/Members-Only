@@ -27,7 +27,7 @@ block content
                         h4 #{message.title}
                         p #{message.text}
                         p #{message.timestamp}
-                        a(href='messages/delete' class='options') Delete message
+                        a(href='/messages/delete/'+message._id class='options') Delete message
                 else if user.member 
                     div(class='messages')
                         h4(class='title') Posted by #{message.user.username}
