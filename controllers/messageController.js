@@ -49,3 +49,17 @@ exports.messages_create_post = [
         }
     }),
 ];
+
+exports.message_delete_get = asyncHandler(async (req, res, next) => {
+    const message = await Message.findById(req.params.id).populate('user').exec();
+
+    res.render('message_delete', { 
+        title: 'Members Only Club - Delete message', 
+        message: message,
+        user: res.locals.currentUser });
+});
+
+exports.message_delete_post = asyncHandler(async (req, res, next) => {
+    await Message.findByIdAndRemove(req.body.id);
+    res.redirect('/messages');
+})

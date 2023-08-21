@@ -31,4 +31,8 @@ router.get('/admin', user_controller.admin_get);
 
 router.post('/admin', user_controller.admin_post);
 
+router.get('/messages/delete/:id', message_controller.message_delete_get);
+
+router.post('/messages/delete/:id', message_controller.message_delete_post);
+
 module.exports = router;
