@@ -1,0 +1,19 @@
+extends layout 
+
+block content 
+    h1= title 
+
+    h2 If you wish to become an admin, please enter the secret passcode for admins
+
+    form(method='POST' action='' class='forms')
+        label(for='username')
+        input(type='hidden'
+            name='username'
+            value=user.username)
+
+        label(for='admin_secret') Admin secret: 
+        input(type='password'
+            name='admin_secret')
+
+        button(type='submit' class='options') Submit 
+        a(href='/messages' class='options') Cancel

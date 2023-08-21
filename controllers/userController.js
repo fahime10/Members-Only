@@ -99,7 +99,7 @@ exports.logout = (req, res, next) => {
 
 exports.membership_get = (req, res, next) => {
     res.render('membership', { title: 'Members Only Club - Membership', user: res.locals.currentUser });
-};
+}
 
 exports.membership_post = asyncHandler(async (req, res, next) => {
     const trueSecret = process.env.SECRET_PASSCODE;
@@ -109,4 +109,17 @@ exports.membership_post = asyncHandler(async (req, res, next) => {
         res.redirect('/messages');
     }
     res.redirect('/messages');
+});
+
+exports.admin_get = (req, res, next) => {
+    res.render('admin', { title: 'Members Only Club - Admin', user: res.locals.currentUser });
+}
+
+exports.admin_post = asyncHandler(async (req, res, next) => {
+    const adminSecret = process.env.ADMIN_PASSCODE;
+
+    if (req.body.admin_secret === adminSecret) {
+        await User.findOneAndUpdate({ username: req.body.username }, { admin: true });
+        res.redirect('/messages');
+    }
 });
