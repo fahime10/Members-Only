@@ -88,9 +88,13 @@ exports.login_post =
     failureRedirect: '/log-in'
 });
 
-exports.logout_get = (req, res) => {
-    req.logout();
-    res.redirect('/');
+exports.logout = (req, res, next) => {
+    req.logout(function(err) {
+        if (err) { 
+            return next(err);
+        }
+        res.redirect('/');
+    });
 }
 
 exports.membership_get = (req, res, next) => {
